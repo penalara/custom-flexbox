@@ -1,0 +1,53 @@
+
+
+<h1>Demo CustomFlexbox</h1>
+
+
+
+<section class="main-area" customFlexbox="column" 
+    customFlexbox.xs="column"
+    customFlexbox.s="row"
+    customFlexbox.l="row"
+    customFlexbox.xl="column"
+    cFGap = "5px"
+    cFGap.m="20px"
+    cFAlign="center"
+    cFAlign.s="end">
+    
+    <div class="caja">1</div>
+    <div class="caja" cfClass="rojo" [cfClass.xs]="{'rojo':false, 'amarillo':true}">2</div>
+    <div class="caja" cfClass="negrita" cfClass.xs="cursiva">3</div>
+
+</section>
+
+<br>
+
+<section class="main-area" customFlexbox="column" 
+    customFlexbox.xs="column"
+    customFlexbox.s="row"
+    customFlexbox.l="row"
+    customFlexbox.xl="column"
+    cFGap = "10px">
+    
+    <div class="caja" [cfClass]="{'rojo':variableBol}"
+        cFOrder.m="3">4</div>
+    <div class="caja" cfHide cfShow.m cFOrder.m="1">5</div>
+    <div class="caja" cFOrder.m="2">6</div>
+
+</section>
+
+<br>
+
+<section class="main-area" customFlexbox="row" 
+    cFGap = "10px">
+    
+    <div style="background-color: aqua;" cFflex="20%">Menu</div>
+    <div style="background-color: red;" cFflex="70%">Contenido</div>
+    <div style="background-color: plum;" cFflex>Extra</div>
+
+</section>
+
+<section>
+    <button (click)="cambiarValorVariable()">Cambiar</button>
+    <p>Valor: {{variableBol}}</p>
+</section>

@@ -1,0 +1,30 @@
+{
+    "name": "@penalara/custom-flexbox",
+    "version": "0.0.3",
+    "author": "Peñalara Software <info@penalara.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/penalara/custom-flexbox.git"
+    },
+    "bugs": {
+        "url": "https://github.com/penalara/custom-flexbox/issues"
+    },
+    "keywords": [
+      "angular",
+      "flex-layout",
+      "custom-flexbox",
+      "flexbox css",
+      "media query",
+      "breakpoints"
+    ],
+    "peerDependencies": {
+        "@angular/common": "^14.0.0",
+        "@angular/core": "^14.0.0",
+        "@angular/platform-browser": "^14.0.0",
+        "@angular/cdk": "^14.0.0"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    }
+}
