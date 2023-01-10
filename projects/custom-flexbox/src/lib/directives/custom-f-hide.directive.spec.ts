@@ -69,9 +69,9 @@ describe('Test CustomFHideDirective', () => {
 
     it('Los elementos div contienen la clase', () => {
 
-        expect(divB.nativeElement).toHaveClass(CustomFHideDirective.CLASE_CSSS_OCULTAR);
-        //expect(divC.nativeElement).toHaveClass(CustomFHideDirective.CLASE_CSSS_OCULTAR);
-        expect(divD.nativeElement).toHaveClass(CustomFHideDirective.CLASE_CSSS_OCULTAR);
+        expect(divB.nativeElement.style.display).toBeDefined();
+        expect(divC.nativeElement.style.display).toBeDefined();
+        expect(divD.nativeElement.style.display).toBeDefined();
     });
 
     it('Valor general esperado en los distintos div', () => {     
@@ -105,13 +105,13 @@ describe('Test CustomFHideDirective', () => {
         expect(spy3).toHaveBeenCalledWith(ResolucionesCustomFlex.LARGE);
 
         //Comprobamos si los div tiene o no la clase corrrespondiente segun
-        expect(divB.nativeElement).not.toHaveClass(CustomFHideDirective.CLASE_CSSS_OCULTAR);
-        expect(divC.nativeElement).toHaveClass(CustomFHideDirective.CLASE_CSSS_OCULTAR);
-        expect(divD.nativeElement).toHaveClass(CustomFHideDirective.CLASE_CSSS_OCULTAR);
+        expect(divB.nativeElement.style.display).toBe(CustomFHideDirective.VALOR_MOSTRAR);
+        expect(divC.nativeElement.style.display).toBe(CustomFHideDirective.VALOR_OCULTAR);
+        expect(divD.nativeElement.style.display).toBe(CustomFHideDirective.VALOR_OCULTAR);
         
     });
 
-    it('Valores esperados en resolucion con sin especificar (comportamiento general)', () => { 
+    it('Valores esperados en resolucion con sin especificar (por defecto M)', () => { 
 
         //Espiamos metodos reAsignarClasesCss
         const spy1 = spyOn<any>(directivaDivB, 'reAsignarClasesCss').and.callThrough();
@@ -126,9 +126,9 @@ describe('Test CustomFHideDirective', () => {
         expect(spy2).toHaveBeenCalledWith(ResolucionesCustomFlex.MEDIUM);
         expect(spy3).toHaveBeenCalledWith(ResolucionesCustomFlex.MEDIUM);
         //Comprobamos si los div tiene o no la clase corrrespondiente segun
-        expect(divB.nativeElement).toHaveClass(CustomFHideDirective.CLASE_CSSS_OCULTAR);
-        expect(divC.nativeElement).not.toHaveClass(CustomFHideDirective.CLASE_CSSS_OCULTAR);
-        expect(divD.nativeElement).toHaveClass(CustomFHideDirective.CLASE_CSSS_OCULTAR);
+        expect(divB.nativeElement.style.display).toBe(CustomFHideDirective.VALOR_OCULTAR);
+        expect(divC.nativeElement.style.display).toBeFalsy();
+        expect(divD.nativeElement.style.display).toBe(CustomFHideDirective.VALOR_OCULTAR);
         
     });
 
@@ -145,7 +145,7 @@ describe('Test CustomFHideDirective', () => {
         expect(spy1).toHaveBeenCalledWith(ResolucionesCustomFlex.MEDIUM);
 
         //Comprobamos si los div tiene o no la clase corrrespondiente segun
-        expect(divB.nativeElement).toHaveClass(CustomFHideDirective.CLASE_CSSS_OCULTAR);
+        expect(divB.nativeElement.style.display).toBe(CustomFHideDirective.VALOR_OCULTAR);
 
         //Emitimos desde el servicio un cambio de resolucion
         breakPointService.cambioBreakPoint$.next(ResolucionesCustomFlex.LARGE);
@@ -153,7 +153,7 @@ describe('Test CustomFHideDirective', () => {
         expect(spy1).toHaveBeenCalledWith(ResolucionesCustomFlex.LARGE);
 
         //Comprobamos si los div tiene o no la clase corrrespondiente segun
-        expect(divB.nativeElement).not.toHaveClass(CustomFHideDirective.CLASE_CSSS_OCULTAR);
+        expect(divB.nativeElement.style.display).toBe(CustomFHideDirective.VALOR_MOSTRAR);
 
     });
 

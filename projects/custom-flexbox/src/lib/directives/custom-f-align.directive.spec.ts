@@ -81,8 +81,8 @@ describe('Test CustomFAlignDirective', () => {
         expect(directive.cacheOrientacionP).toBe(TipoAlineacionPorPerpendicular.STRETCH);
 
 
-        expect(divContenedor.nativeElement).toHaveClass("justify_start");
-        expect(divContenedor.nativeElement).toHaveClass("align-stretch");
+        expect(divContenedor.nativeElement.style.justifyContent).toBe("start");
+        expect(divContenedor.nativeElement.style.alignItems).toBe("stretch");
     });
 
     it('Con la resolucion XL se establece la configuracion esperada', () => {
@@ -99,8 +99,8 @@ describe('Test CustomFAlignDirective', () => {
         expect(directive.cacheAlineacionPorO).toBe(TipoAlineacionPorOrientacion.SPACE_BETWEEN);
         expect(directive.cacheOrientacionP).toBe(TipoAlineacionPorPerpendicular.END);
 
-        expect(divContenedor.nativeElement).toHaveClass("space-between");
-        expect(divContenedor.nativeElement).toHaveClass("align-end");
+        expect(divContenedor.nativeElement.style.justifyContent).toBe("space-between");
+        expect(divContenedor.nativeElement.style.alignItems).toBe("flex-end");
     });
 
 
@@ -118,7 +118,8 @@ describe('Test CustomFAlignDirective', () => {
         expect(directive.cacheAlineacionPorO).toBe(TipoAlineacionPorOrientacion.CENTER);
         expect(directive.cacheOrientacionP).toBe(TipoAlineacionPorPerpendicular.CENTER);
 
-        expect(divContenedor.nativeElement).toHaveClass("justify_center");
-        expect(divContenedor.nativeElement).toHaveClass("align-center");
+        expect(divContenedor.nativeElement.style.justifyContent).toBe("center");
+        expect(divContenedor.nativeElement.style.alignItems).toBe("center");
+     
     });
 });

@@ -1,6 +1,5 @@
-import { Directive, ElementRef, inject, Input, Renderer2 } from '@angular/core';
+import { Directive,Input} from '@angular/core';
 import { ResolucionesCustomFlex } from '../constants/resoluciones.enum';
-import { BreakPointService } from '../service/break-point.service';
 import { CustomFlexboxBase } from './base-directive/custom-flexbox-base.directive';
 
 
@@ -45,38 +44,49 @@ export enum TipoAlineacionPorPerpendicular{
 })
 export class CustomFAlignDirective extends CustomFlexboxBase{
 
+    /**
+     * Propiedad CSS a aplicar para alinear los elementos en el sentido del Flex
+     */
+    static readonly PROPIEDAD_CSS_ALINEACION_ORIENTACION_FLEX:string = "justify-content";
+
+    /**
+     * Propiedad CSS a aplicar para alinear los elementos en la otientacion
+     * perpendicular a la orientacion del Flex.
+     */
+    static readonly PROPIEDAD_CSS_ALINEACION_PERPENDICULAR_FLEX:string = "align-items"
+
 
     readonly VALOR_ALINEACION_POR_ORIENTACION_FLEX_DEFAULT:TipoAlineacionPorOrientacion = TipoAlineacionPorOrientacion.START;
 
     readonly VALOR_ALINEACION_POR_PERPENDICULAR_DEFAULT:TipoAlineacionPorPerpendicular = TipoAlineacionPorPerpendicular.STRETCH;
 
     /**
-     * MAPA con el nombre de las clases CSS por casa Tipo de
-     * Alineacion segun la direccion/orientacion del FlexBox.
+     * MAPA con el valor CSS para la propiedad `justify-content`, utilizada
+     * para la Alineacion segun la direccion/orientacion del FlexBox.
      */
-    readonly MAPA_CLASE_CSS_POR_ORIENTACION_FLEX:Map<string,string|undefined> =
+    readonly MAPA_VALOR_JUSTIFY_CONTENT:Map<string,string|undefined> =
         new Map<string,string|undefined>([
             [TipoAlineacionPorOrientacion.NONE,undefined],
-            [TipoAlineacionPorOrientacion.START,"justify_start"],
-            [TipoAlineacionPorOrientacion.CENTER,"justify_center"],
-            [TipoAlineacionPorOrientacion.END,"justify_end"],
+            [TipoAlineacionPorOrientacion.START,"start"],
+            [TipoAlineacionPorOrientacion.CENTER,"center"],
+            [TipoAlineacionPorOrientacion.END,"end"],
             [TipoAlineacionPorOrientacion.SPACE_AROUND,"space-around"],
             [TipoAlineacionPorOrientacion.SPACE_BETWEEN,"space-between"],
             [TipoAlineacionPorOrientacion.SPACE_EVENLY,"space-evenly"]
         ]);
 
     /**
-     * MAPA con el nombre de las clases CSS por casa Tipo de
-     * Alineacion segun la PERPENDICULAR respecto de la direccion
+     * MAPA con el valor CSS para la propiedad `alig-items`, utilizada
+     * para  la Alineacion segun la PERPENDICULAR respecto de la direccion
      * del FlexBox.
      */
-    readonly MAPA_CLASE_CSS_POR_PERPENDICULAR_FLEX:Map<string,string|undefined> =
+    readonly MAPA_VALOR_ALIGN_ITEMS:Map<string,string|undefined> =
         new Map<string,string|undefined>([
             [TipoAlineacionPorPerpendicular.NONE,undefined],
-            [TipoAlineacionPorPerpendicular.START,"align-start"],
-            [TipoAlineacionPorPerpendicular.CENTER,"align-center"],
-            [TipoAlineacionPorPerpendicular.END,"align-end"],
-            [TipoAlineacionPorPerpendicular.STRETCH,"align-stretch"]
+            [TipoAlineacionPorPerpendicular.START,"flex-start"],
+            [TipoAlineacionPorPerpendicular.CENTER,"center"],
+            [TipoAlineacionPorPerpendicular.END,"flex-end"],
+            [TipoAlineacionPorPerpendicular.STRETCH,"stretch"]
         ]);
 
     /**
@@ -138,13 +148,14 @@ export class CustomFAlignDirective extends CustomFlexboxBase{
      * Cache del valor utilizado actualmente para distribuir la alineacion
      * segun por la dieccion de orientacion del FlexBox.
      */
-    cacheAlineacionPorO:TipoAlineacionPorOrientacion = this.VALOR_ALINEACION_POR_ORIENTACION_FLEX_DEFAULT;
+    cacheAlineacionPorO:TipoAlineacionPorOrientacion = TipoAlineacionPorOrientacion.NONE;
+
 
     /**
      * Cache del valor utilizado actualmente para distribuir la alineacion
      * por Perpendicular con direccion FlexBox.
      */
-    cacheOrientacionP:TipoAlineacionPorPerpendicular = this.VALOR_ALINEACION_POR_PERPENDICULAR_DEFAULT;
+    cacheOrientacionP:TipoAlineacionPorPerpendicular = TipoAlineacionPorPerpendicular.NONE;
 
     /**
      * Valor especificado por @Input como por defecto en la alineacion
@@ -209,50 +220,55 @@ export class CustomFAlignDirective extends CustomFlexboxBase{
         const nuevaAlineacionP:TipoAlineacionPorPerpendicular = this.mapaAlineacionPorPerpendicularResolucion.get(nuevaResolucion)
             ?? this.alineacionPorPerpendicularGeneral;
 
-        //Comprobamos si cambia la alineacion por direccion del flexbox
+        //Comprobamos si cambia la alineacion por ORIENTACION FLEX
         if(nuevaAlineacionO !== this.cacheAlineacionPorO){
-            //Quitamos la clase previa
-            const clasePrevia:string|undefined = 
-                this.MAPA_CLASE_CSS_POR_ORIENTACION_FLEX.get(this.cacheAlineacionPorO)
-            //Si la configuracion anterior, tenia clase css asignada
-            if(clasePrevia){
-                this.renderer.removeClass(this.hostElement.nativeElement,
-                    clasePrevia);
+
+            //Obtenemos el nuevo valor para la propiedad `justify-content`
+            const nuevoValorPropiedadCss:string|undefined = 
+                this.MAPA_VALOR_JUSTIFY_CONTENT.get(nuevaAlineacionO)
+
+            //Si se debe añadir nuevo valor
+            if(nuevoValorPropiedadCss){
+                //Añadimos el nuevo valor para `justify-content`
+                this.renderer.setStyle(this.hostElement.nativeElement,
+                    CustomFAlignDirective.PROPIEDAD_CSS_ALINEACION_ORIENTACION_FLEX,
+                    nuevoValorPropiedadCss);
+
+            } else { // Se ha indicado que no se debe alinear
+                //Eliminamos propiedad `justify-content`
+                this.renderer.removeStyle(this.hostElement.nativeElement,
+                    CustomFAlignDirective.PROPIEDAD_CSS_ALINEACION_ORIENTACION_FLEX);
             }
-            //Añadimos la clase correspondiente
-            const nuevaClase:string|undefined = 
-                this.MAPA_CLASE_CSS_POR_ORIENTACION_FLEX.get(nuevaAlineacionO)
-            //Si la nueva confiugracion requiere de clase css
-            if(nuevaClase){
-                this.renderer.addClass(this.hostElement.nativeElement,
-                    nuevaClase);
-            }
+
             //Actualizamos cache despues del cambio
             this.cacheAlineacionPorO = nuevaAlineacionO;
-        }
 
-        //Si cambia la alineacion por PERPENDICULAR con direccion del flexbox
+        }// ELSE. No cambio alineacion en direccion Flex
+
+        //Si cambia la alineacion por PERPENDICULAR con direccion del flex
         if(nuevaAlineacionP !== this.cacheOrientacionP){
-            //Quitamos la clase previa
-            const clasePreviaP:string|undefined = 
-                this.MAPA_CLASE_CSS_POR_ORIENTACION_FLEX.get(this.cacheOrientacionP)
-            //Si la configuracion anterior, tenia clase css asignada
-            if(clasePreviaP){
-                this.renderer.removeClass(this.hostElement.nativeElement,
-                    clasePreviaP);
-            }
-            //Añadimos la clase correspondiente
-            const nuevaClaseP:string|undefined = 
-                this.MAPA_CLASE_CSS_POR_PERPENDICULAR_FLEX.get(nuevaAlineacionP)
-            //Si la nueva confiugracion requiere de clase css
-            if(nuevaClaseP){
-                this.renderer.addClass(this.hostElement.nativeElement,
-                    nuevaClaseP);
+
+            //Obtenemos el nuevo valor para la propiedad `align-items`
+            const nuevoValorPropiedadCssP:string|undefined = 
+                this.MAPA_VALOR_ALIGN_ITEMS.get(nuevaAlineacionP);
+
+            //Si se debe añadir nuevo valor
+            if(nuevoValorPropiedadCssP){
+                //Añadimos el nuevo valor para `align-items`
+                this.renderer.setStyle(this.hostElement.nativeElement,
+                    CustomFAlignDirective.PROPIEDAD_CSS_ALINEACION_PERPENDICULAR_FLEX,
+                    nuevoValorPropiedadCssP);
+
+            } else { // Se ha indicado que no se debe alinear en perpendicular a flex
+                //Eliminamos propiedad `align-items`
+                this.renderer.removeStyle(this.hostElement.nativeElement,
+                    CustomFAlignDirective.PROPIEDAD_CSS_ALINEACION_PERPENDICULAR_FLEX);
             }
 
             //Actualizamos cache despues del cambio
-            this.cacheOrientacionP = nuevaAlineacionP;    
-        }
+            this.cacheOrientacionP = nuevaAlineacionP;
+
+        }// ELSE. No cambio alienacion en orientacion PERPENDICULAR Flex
 
     }
 
