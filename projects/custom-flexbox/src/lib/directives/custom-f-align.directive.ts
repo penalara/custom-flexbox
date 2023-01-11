@@ -34,7 +34,7 @@ export enum TipoAlineacionPorPerpendicular{
  */
 @Directive({
     selector: `
-        [cFAlign]
+        [cFAlign],
         [cFAlign.xs],
         [cFAlign.s],
         [cFAlign.m],

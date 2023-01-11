@@ -21,7 +21,7 @@ import { CustomFAlignDirective, TipoAlineacionPorOrientacion, TipoAlineacionPorP
             <div id="C">C</div>
         </div>
     `
-  })
+})
 class TestAlignComponent {}
 
 describe('Test CustomFAlignDirective', () => {
