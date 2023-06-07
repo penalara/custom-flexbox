@@ -300,7 +300,7 @@ export class CustomFAlignDirective extends CustomFlexboxBase{
             }
 
         } else {//Advertencia a consola
-            console.warn("No se han indicado alineaciones validas de Custom Flex");
+            console.warn("No se han indicado alineaciones validas de Custom Flex: "+value);
         }
     }
 
