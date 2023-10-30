@@ -64,11 +64,11 @@ Nota: puede seguirse de guía esta [web](https://tburleson-layouts-demos.firebas
 
 Esta directiva permite establecer, entre todos los elementos dentro de un contenedor, una determinada separación en pixeles.
 
-El selector es `cfGap`. Se puede indicar con o sin el px. Ejemplos para establecer 2o pixeles entre los contenedores que estén contenidos por el contenedor que contiene la directiva:
+El selector es `cFGap`. Se puede indicar con o sin el px. Ejemplos para establecer 2o pixeles entre los contenedores que estén contenidos por el contenedor que contiene la directiva:
 
- - `cfGap=20`
- - `cfGap="20px"`
- - `cfGap="20"`
+ - `cFGap=20`
+ - `cFGap="20px"`
+ - `cFGap="20"`
 
 
 
