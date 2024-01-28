@@ -14,4 +14,4 @@ export * from './lib/directives/custom-f-hide.directive'
 export * from './lib/directives/custom-f-ng-class.directive'
 export * from './lib/directives/custom-f-order.directive'
 export * from './lib/directives/custom-flexbox.directive'
-
+export * from './lib/constants/resoluciones.enum'
