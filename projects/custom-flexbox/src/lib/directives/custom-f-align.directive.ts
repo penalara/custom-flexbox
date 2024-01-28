@@ -329,7 +329,7 @@ export class CustomFAlignDirective extends CustomFlexboxBase{
             }
 
         } else {//Advetencia
-            console.warn("No se han indicado alineacion en direccion Flex valida.");
+            console.warn("No se han indicado alineacion en direccion Flex valida: "+termino);
         }
     }
 
@@ -358,7 +358,7 @@ export class CustomFAlignDirective extends CustomFlexboxBase{
             }
 
         } else {//Advetencia
-            console.warn("No se han indicado alineacion perpendicular valida.");
+            console.warn("No se han indicado alineacion perpendicular valida: "+termino);
         }
     }
 
