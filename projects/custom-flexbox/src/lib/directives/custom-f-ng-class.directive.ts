@@ -19,9 +19,9 @@ interface AplicacionClase {
     selector: `
         [cfClass],
         [cfClass.xs],
-        [cfClass.sm],
-        [cfClass.md],
-        [cfClass.lg],
+        [cfClass.s],
+        [cfClass.m],
+        [cfClass.l],
         [cfClass.xl]
     `
 })
