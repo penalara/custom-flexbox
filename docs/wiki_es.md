@@ -43,9 +43,11 @@ La directiva con selector `customFlexbox` nos permite indicar la orientación de
 Tiene dos posibles valores: `row` o `column`.
 
 Con `<div customflebox='row'>`
+
 ![colocacionDicEnFila](/images/row-start-stretch.png)
 
 Con `<div customflebox='column'>`
+
 ![colocacionDicEnFila](/images/row-start-stretch.png)
 
 ## Directiva de alineación de los contenedores
