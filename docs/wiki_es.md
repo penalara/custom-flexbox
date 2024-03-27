@@ -48,7 +48,7 @@ Con `<div customflebox='row'>`
 
 Con `<div customflebox='column'>`
 
-![colocacionDicEnFila](/images/row-start-stretch.png)
+![colocacionDicEnFila](/images/column-start-stretch.png)
 
 ## Directiva de alineación de los contenedores
 
