@@ -19,8 +19,9 @@ import { CustomFGapDirective } from './custom-f-gap.directive';
             <div id="B">B</div>
             <div id="C">C</div>
         </div>
-    `
-  })
+    `,
+    standalone: false
+})
 class TestGapComponent {}
 
 

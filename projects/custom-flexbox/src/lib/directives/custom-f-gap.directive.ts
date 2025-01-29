@@ -15,7 +15,8 @@ import { CustomFlexboxBase } from './base-directive/custom-flexbox-base.directiv
         [cFGap.m],
         [cFGap.l],
         [cFGap.xl]
-    `
+    `,
+    standalone: false
 })
 export class CustomFGapDirective extends CustomFlexboxBase {
 

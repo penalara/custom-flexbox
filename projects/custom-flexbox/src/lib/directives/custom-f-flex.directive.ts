@@ -14,7 +14,8 @@ import { CustomFlexboxBase } from './base-directive/custom-flexbox-base.directiv
         [cFflex.m],
         [cFflex.l],
         [cFflex.xl]
-    `
+    `,
+    standalone: false
 })
 export class CustomFFlexDirective extends CustomFlexboxBase{
 

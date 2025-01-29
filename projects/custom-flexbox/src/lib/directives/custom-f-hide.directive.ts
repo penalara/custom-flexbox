@@ -19,7 +19,8 @@ import { CustomFlexboxBase } from './base-directive/custom-flexbox-base.directiv
         [cfShow.m],
         [cfShow.l],
         [cfShow.xl]
-    `
+    `,
+    standalone: false
 })
 export class CustomFHideDirective extends CustomFlexboxBase implements OnInit{
 

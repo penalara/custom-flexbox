@@ -20,8 +20,9 @@ import { CustomFlexboxDirective } from './custom-flexbox.directive';
             <div id="B">B</div>
             <div id="C">C</div>
         </div>
-    `
-  })
+    `,
+    standalone: false
+})
 class TestCustomFlexboxComponent {}
 
 

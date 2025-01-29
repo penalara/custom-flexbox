@@ -20,7 +20,8 @@ import { CustomFAlignDirective, TipoAlineacionPorOrientacion, TipoAlineacionPorP
             <div id="B">B</div>
             <div id="C">C</div>
         </div>
-    `
+    `,
+    standalone: false
 })
 class TestAlignComponent {}
 

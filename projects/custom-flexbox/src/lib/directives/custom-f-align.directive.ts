@@ -40,7 +40,8 @@ export enum TipoAlineacionPorPerpendicular{
         [cFAlign.m],
         [cFAlign.l],
         [cFAlign.xl]
-    `
+    `,
+    standalone: false
 })
 export class CustomFAlignDirective extends CustomFlexboxBase{
 

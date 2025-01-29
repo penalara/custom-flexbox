@@ -17,8 +17,9 @@ import { CustomFOrderDirective } from './custom-f-order.directive';
             <div id="B" cFOrder=2 cFOrder.xs="1">B</div>
             <div id="C" cFOrder="3" cFOrder.xs=2>C</div>
         </div>
-    `
-  })
+    `,
+    standalone: false
+})
 class TestOrderComponent {}
 
 describe('CustomFOrderDirective', () => {

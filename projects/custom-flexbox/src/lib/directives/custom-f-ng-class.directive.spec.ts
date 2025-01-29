@@ -31,8 +31,9 @@ import { CustomFNgClassDirective } from './custom-f-ng-class.directive';
         .claseC{
             color: blue;
         }
-    `]
-  })
+    `],
+    standalone: false
+})
 class TestNgClassComponent {}
 
 describe('Test CustomFNgClassDirective', () => {

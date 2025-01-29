@@ -23,7 +23,8 @@ interface AplicacionClase {
         [cfClass.m],
         [cfClass.l],
         [cfClass.xl]
-    `
+    `,
+    standalone: false
 })
 export class CustomFNgClassDirective extends CustomFlexboxBase {
 

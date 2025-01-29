@@ -16,8 +16,9 @@ import { CustomFFlexDirective } from './custom-f-flex.directive';
             <div id="B" cFflex=50 cFflex.xs="80%">B</div>
             <div id="C" cFflex="20" cFflex.xs>C</div>
         </div>
-    `
-  })
+    `,
+    standalone: false
+})
 class TestFlexComponent {}
 
 describe('Test CustomFFlexDirective', () => {

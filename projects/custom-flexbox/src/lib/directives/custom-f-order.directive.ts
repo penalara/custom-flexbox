@@ -10,7 +10,8 @@ import { CustomFlexboxBase } from './base-directive/custom-flexbox-base.directiv
         [cFOrder.m],
         [cFOrder.l],
         [cFOrder.xl]
-    `
+    `,
+    standalone: false
 })
 export class CustomFOrderDirective extends CustomFlexboxBase {
 

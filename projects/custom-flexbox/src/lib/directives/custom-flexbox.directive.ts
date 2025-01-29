@@ -21,7 +21,8 @@ enum TipoHorientacion{
         [customFlexbox.m],
         [customFlexbox.l],
         [customFlexbox.xl]
-    `
+    `,
+    standalone: false
 })
 export class CustomFlexboxDirective extends CustomFlexboxBase implements OnInit{
 

@@ -17,8 +17,9 @@ import { CustomFHideDirective } from './custom-f-hide.directive';
             <div id="C" cfHide.l>C</div>
             <div id="D" cfHide>D</div>
         </div>
-    `
-  })
+    `,
+    standalone: false
+})
 class TestHidepComponent {}
 
 
