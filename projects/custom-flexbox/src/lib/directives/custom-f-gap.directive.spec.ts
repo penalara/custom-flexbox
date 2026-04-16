@@ -94,8 +94,8 @@ describe('Test CustomFGapDirective', () => {
     it('En una resolucion no configurada, se usa el valor general', () => { 
 
         //Espiamos metodo reAsignarClasesCss
-        const spy1 = spyOn<any>(directive, 'reAsignarClasesCss').and.callThrough();
-        
+        const spy1 = vi.spyOn(directive as any, 'reAsignarClasesCss');
+
         //Emitimos desde el servicio un cambio de resolucion
         breakPointService.cambioBreakPoint$.next(ResolucionesCustomFlex.LARGE);
 
@@ -109,7 +109,7 @@ describe('Test CustomFGapDirective', () => {
     it('En una resolucion configurada, se muestra su valor', () => {     
 
         //Espiamos metodo reAsignarClasesCss
-        const spy1 = spyOn<any>(directive, 'reAsignarClasesCss').and.callThrough();;
+        const spy1 = vi.spyOn(directive as any, 'reAsignarClasesCss');
         
         //Emitimos desde el servicio un cambio de resolucion
         breakPointService.cambioBreakPoint$.next(ResolucionesCustomFlex.XLARGE);

@@ -78,9 +78,9 @@ describe('CustomFOrderDirective', () => {
 
 
         //Espiamos metodos reAsignarClasesCss
-        const spy1 = spyOn<any>(directivaDivA, 'reAsignarClasesCss').and.callThrough();
-        const spy2 = spyOn<any>(directivaDivB, 'reAsignarClasesCss').and.callThrough();
-        const spy3 = spyOn<any>(directivaDivC, 'reAsignarClasesCss').and.callThrough();
+        const spy1 = vi.spyOn(directivaDivA as any, 'reAsignarClasesCss');
+        const spy2 = vi.spyOn(directivaDivB as any, 'reAsignarClasesCss');
+        const spy3 = vi.spyOn(directivaDivC as any, 'reAsignarClasesCss');
         
 
         //CAMBIAMOS A RESOLUCION L
@@ -129,7 +129,7 @@ describe('CustomFOrderDirective', () => {
     it('En las resolucion especficamente configurada (XS), se usa el valor configurado', () => { 
 
         //Espiamos metodo reAsignarClasesCss
-        const spy = spyOn<any>(directivaDivA, 'reAsignarClasesCss').and.callThrough();
+        const spy = vi.spyOn(directivaDivA as any, 'reAsignarClasesCss');
 
         //CAMBIAMOS A RESOLUCION XS
 

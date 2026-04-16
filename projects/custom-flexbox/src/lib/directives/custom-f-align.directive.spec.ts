@@ -70,7 +70,7 @@ describe('Test CustomFAlignDirective', () => {
     it('Con la resolucion S se establece la configuracion esperada', () => {
         
         //Espiamos metodo reAsignarClasesCss
-        const spy1 = spyOn<any>(directive, 'reAsignarClasesCss').and.callThrough();
+        const spy1 = vi.spyOn(directive as any, 'reAsignarClasesCss');
 
         //Emitimos desde el servicio un cambio de resolucion
         breakPointService.cambioBreakPoint$.next(ResolucionesCustomFlex.SAMLL);
@@ -89,7 +89,7 @@ describe('Test CustomFAlignDirective', () => {
     it('Con la resolucion XL se establece la configuracion esperada', () => {
         
         //Espiamos metodo reAsignarClasesCss
-        const spy1 = spyOn<any>(directive, 'reAsignarClasesCss').and.callThrough();
+        const spy1 = vi.spyOn(directive as any, 'reAsignarClasesCss');
 
         //Emitimos desde el servicio un cambio de resolucion
         breakPointService.cambioBreakPoint$.next(ResolucionesCustomFlex.XLARGE);
@@ -108,7 +108,7 @@ describe('Test CustomFAlignDirective', () => {
     it('Se aplican clases generales con resolucion L', () => {
         
         //Espiamos metodo reAsignarClasesCss
-        const spy1 = spyOn<any>(directive, 'reAsignarClasesCss').and.callThrough();
+        const spy1 = vi.spyOn(directive as any, 'reAsignarClasesCss');
 
         //Emitimos desde el servicio un cambio de resolucion
         breakPointService.cambioBreakPoint$.next(ResolucionesCustomFlex.LARGE);

@@ -73,7 +73,7 @@ describe('Test CustomFlexboxDirective', () => {
         expect(divContenedor.nativeElement.style.flexDirection).toBe('row');
 
         //Espiamos metodo reAsignarClasesCss
-        const spy1 = spyOn<any>(directive, 'reAsignarClasesCss').and.callThrough();
+        const spy1 = vi.spyOn(directive as any, 'reAsignarClasesCss');
         
 
         //CAMBIAMOS A L
@@ -104,7 +104,7 @@ describe('Test CustomFlexboxDirective', () => {
     it('En las resoluciones XS y S se usara orientacion de column', () => { 
 
         //Espiamos metodo reAsignarClasesCss
-        const spy1 = spyOn<any>(directive, 'reAsignarClasesCss').and.callThrough();
+        const spy1 = vi.spyOn(directive as any, 'reAsignarClasesCss');
         
 
         //CAMBIAMOS A S

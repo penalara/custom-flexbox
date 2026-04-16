@@ -84,18 +84,18 @@ describe('Test CustomFHideDirective', () => {
          * Y cuando se especifica configuracion sera `true` o `false` en general
          * o en cada resolucion.
          */
-        expect(directivaDivB.visibilidadPorDefecto).toBeFalse();
-        expect(directivaDivC.visibilidadPorDefecto).not.toBeFalse();
-        expect(directivaDivD.visibilidadPorDefecto).toBeFalse();
+        expect(directivaDivB.visibilidadPorDefecto).toBeFalsy();
+        expect(directivaDivC.visibilidadPorDefecto).not.toBeFalsy();
+        expect(directivaDivD.visibilidadPorDefecto).toBeFalsy();
     });
 
 
     it('Valores esperados en resolucion con configuraciones especificadas', () => { 
 
         //Espiamos metodos reAsignarClasesCss
-        const spy1 = spyOn<any>(directivaDivB, 'reAsignarClasesCss').and.callThrough();
-        const spy2 = spyOn<any>(directivaDivC, 'reAsignarClasesCss').and.callThrough();
-        const spy3 = spyOn<any>(directivaDivD, 'reAsignarClasesCss').and.callThrough();
+        const spy1 = vi.spyOn(directivaDivB as any, 'reAsignarClasesCss');
+        const spy2 = vi.spyOn(directivaDivC as any, 'reAsignarClasesCss');
+        const spy3 = vi.spyOn(directivaDivD as any, 'reAsignarClasesCss');
         
         //Emitimos desde el servicio un cambio de resolucion
         breakPointService.cambioBreakPoint$.next(ResolucionesCustomFlex.LARGE);
@@ -115,9 +115,9 @@ describe('Test CustomFHideDirective', () => {
     it('Valores esperados en resolucion con sin especificar (por defecto M)', () => { 
 
         //Espiamos metodos reAsignarClasesCss
-        const spy1 = spyOn<any>(directivaDivB, 'reAsignarClasesCss').and.callThrough();
-        const spy2 = spyOn<any>(directivaDivC, 'reAsignarClasesCss').and.callThrough();
-        const spy3 = spyOn<any>(directivaDivD, 'reAsignarClasesCss').and.callThrough();
+        const spy1 = vi.spyOn(directivaDivB as any, 'reAsignarClasesCss');
+        const spy2 = vi.spyOn(directivaDivC as any, 'reAsignarClasesCss');
+        const spy3 = vi.spyOn(directivaDivD as any, 'reAsignarClasesCss');
         
         //Emitimos desde el servicio un cambio de resolucion
         breakPointService.cambioBreakPoint$.next(ResolucionesCustomFlex.MEDIUM);
@@ -137,7 +137,7 @@ describe('Test CustomFHideDirective', () => {
     it('Al cambiar la resolucion cambia la visibilidad si asi esta conf', () => { 
 
         //Espiamos metodos reAsignarClasesCss
-        const spy1 = spyOn<any>(directivaDivB, 'reAsignarClasesCss').and.callThrough();
+        const spy1 = vi.spyOn(directivaDivB as any, 'reAsignarClasesCss');
 
         //Emitimos desde el servicio un cambio de resolucion
         breakPointService.cambioBreakPoint$.next(ResolucionesCustomFlex.MEDIUM);

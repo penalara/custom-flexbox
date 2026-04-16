@@ -25,11 +25,11 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "projects/custom-flexbox/src/test.ts",
+            "buildTarget": "custom-flexbox:build:development",
             "tsConfig": "projects/custom-flexbox/tsconfig.spec.json",
-            "karmaConfig": "projects/custom-flexbox/karma.conf.js"
+            "runner": "vitest"
           }
         }
       }
@@ -112,20 +112,11 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "projects/demo-app/src/test.ts",
-            "polyfills": "projects/demo-app/src/polyfills.ts",
+            "buildTarget": "demo-app:build:development",
             "tsConfig": "projects/demo-app/tsconfig.spec.json",
-            "karmaConfig": "projects/demo-app/karma.conf.js",
-            "assets": [
-              "projects/demo-app/src/favicon.ico",
-              "projects/demo-app/src/assets"
-            ],
-            "styles": [
-              "projects/demo-app/src/styles.css"
-            ],
-            "scripts": []
+            "runner": "vitest"
           }
         }
       }
