@@ -45,3 +45,6 @@ Thumbs.db
 
 #npm publish
 .npmrc
+
+#ia
+.claude
